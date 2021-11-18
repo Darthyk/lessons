@@ -120,25 +120,22 @@ public class LinkedList
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
     {
-        if (_nodeAfter == null) {
-            if (this.tail != null) {
-                Node nextNode = this.head;
+        if (_nodeAfter == null || find(_nodeAfter.value) == null) {
+            if (this.head == null && this.tail == null) {
+                addInTail(_nodeToInsert);
+            } else if (this.head != null && this.tail != null) {
+                Node temp = this.head;
                 this.head = _nodeToInsert;
-                this.head.next = nextNode;
-            } else if (this.head != null) {
-                this.tail = this.head;
-                this.head = _nodeToInsert;
-            } else {
-                this.head = _nodeToInsert;
+                this.head.next = temp;
             }
         } else {
-            Node node = this.head;
-            while (node != null) {
-                if (node == _nodeAfter) {
-                    _nodeToInsert.next = node.next;
-                    node.next = _nodeToInsert;
-                }
-                node = node.next;
+            Node node = find(_nodeAfter.value);
+            if (this.tail == node) {
+                addInTail(_nodeToInsert);
+            } else {
+                Node nextAfter = node.next;
+                node.next = _nodeToInsert;
+                node.next.next = nextAfter;
             }
         }
     }

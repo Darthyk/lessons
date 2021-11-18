@@ -169,6 +169,51 @@ public class LinkedListTest {
     }
 
     @Test
+    public void testInsertAfterInEmptyList() {
+        LinkedList linkedList = new LinkedList();
+
+        LinkedList.Node nodeAfter = new LinkedList.Node(19);
+        LinkedList.Node nodeToInsert = new LinkedList.Node(1);
+
+        linkedList.insertAfter(nodeAfter, nodeToInsert);
+        assertEquals(nodeToInsert, linkedList.find(1));
+    }
+
+    @Test
+    public void testInsertAfterInHead() {
+        LinkedList linkedList = getWithDifferentValues();
+
+        LinkedList.Node head = linkedList.head;
+        LinkedList.Node next = linkedList.head.next;
+        LinkedList.Node tail = linkedList.tail;
+        LinkedList.Node nodeAfter = linkedList.find(1);
+        LinkedList.Node nodeToInsert = new LinkedList.Node(9);
+
+       linkedList.insertAfter(nodeAfter, nodeToInsert);
+
+       assertEquals(7, linkedList.count());
+       assertEquals(head, linkedList.head);
+       assertEquals(next, nodeToInsert.next);
+       assertEquals(tail, linkedList.tail);
+    }
+
+    @Test
+    public void testInsertAfterInTail() {
+        LinkedList linkedList = getWithDifferentValues();
+
+        LinkedList.Node head = linkedList.head;
+        LinkedList.Node nodeAfter = linkedList.find(6);
+        LinkedList.Node nodeToInsert = new LinkedList.Node(9);
+
+        linkedList.insertAfter(nodeAfter, nodeToInsert);
+
+        assertEquals(7, linkedList.count());
+        assertEquals(head, linkedList.head);
+        assertEquals(nodeToInsert, linkedList.tail);
+
+    }
+
+    @Test
     public void testFindAll() {
         LinkedList linkedList = getWithEqualValues();
         ArrayList<LinkedList.Node> nodes = linkedList.findAll(4);
