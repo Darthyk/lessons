@@ -48,6 +48,9 @@ public class LinkedList
             if (node.value == _value) {
                 if (previousNode.equals(this.head)) {
                     this.head = node.next;
+                } else if (node.equals(this.tail)) {
+                    this.tail = previousNode;
+                    this.tail.next = null;
                 } else {
                     previousNode.next = node.next;
                 }
@@ -112,15 +115,16 @@ public class LinkedList
             }
         }
     }
-}
 
-class Node
-{
-    public int value;
-    public Node next;
-    public Node(int _value)
+    static class Node
     {
-        value = _value;
-        next = null;
+        public int value;
+        public Node next;
+        public Node(int _value)
+        {
+            value = _value;
+            next = null;
+        }
     }
 }
+

@@ -1,4 +1,3 @@
-/*
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -67,6 +66,14 @@ public class LinkedListTest {
     }
 
     @Test
+    public void testRemoveAllFromTail() {
+        LinkedList linkedList = getWithEqualValuesInTail();
+        linkedList.removeAll(4);
+        assertEquals(3, linkedList.count());
+        assertNull(linkedList.tail.next);
+    }
+
+    @Test
     public void testFind() {
         LinkedList linkedList = getWithDifferentValues();
         LinkedList.Node node = linkedList.find(2);
@@ -124,4 +131,15 @@ public class LinkedListTest {
         linkedList.addInTail(new LinkedList.Node(4));
         return linkedList;
     }
-}*/
+
+    private LinkedList getWithEqualValuesInTail() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addInTail(new LinkedList.Node(1));
+        linkedList.addInTail(new LinkedList.Node(2));
+        linkedList.addInTail(new LinkedList.Node(3));
+        linkedList.addInTail(new LinkedList.Node(4));
+        linkedList.addInTail(new LinkedList.Node(4));
+        linkedList.addInTail(new LinkedList.Node(4));
+        return linkedList;
+    }
+}
