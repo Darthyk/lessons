@@ -12,11 +12,13 @@ public class LinkedList
     }
 
     public void addInTail(Node item) {
-        if (this.head == null)
+        if (this.head == null) {
             this.head = item;
-        else
+            this.tail = item;
+        } else {
             this.tail.next = item;
-        this.tail = item;
+            this.tail = item;
+        }
     }
 
     public Node find(int value) {

@@ -7,6 +7,28 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LinkedListTest {
+
+    @Test
+    public void addOneToEmptyList() {
+        LinkedList linkedList = new LinkedList();
+        LinkedList.Node node = new LinkedList.Node(4);
+        linkedList.addInTail(node);
+        assertEquals(node, linkedList.head);
+        assertEquals(node, linkedList.tail);
+    }
+
+    @Test
+    public void addTwoToEmptyList() {
+        LinkedList linkedList = new LinkedList();
+        LinkedList.Node node = new LinkedList.Node(4);
+        LinkedList.Node node2 = new LinkedList.Node(7);
+        linkedList.addInTail(node);
+        linkedList.addInTail(node2);
+        assertEquals(node, linkedList.head);
+        assertEquals(node2, linkedList.tail);
+        assertNull(linkedList.tail.next);
+    }
+
     @Test
     public void testClear() {
        LinkedList linkedList = getWithDifferentValues();
