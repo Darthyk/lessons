@@ -1,3 +1,4 @@
+/*
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -240,4 +241,4 @@ public class LinkedListTest {
         linkedList.addInTail(new LinkedList.Node(4));
         return linkedList;
     }
-}
+}*/
