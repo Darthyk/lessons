@@ -142,15 +142,16 @@ public class LinkedList
             }
         }
     }
-}
 
-class Node
-{
-    public int value;
-    public Node next;
-    public Node(int _value)
+    static class Node
     {
-        value = _value;
-        next = null;
+        public int value;
+        public Node next;
+        public Node(int _value)
+        {
+            value = _value;
+            next = null;
+        }
     }
 }
+
