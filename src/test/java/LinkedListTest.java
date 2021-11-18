@@ -26,6 +26,30 @@ public class LinkedListTest {
     }
 
     @Test
+    public void testRemoveOneFromHead() {
+        LinkedList linkedList = getWithEqualValues();
+        LinkedList.Node tail = linkedList.tail;
+        assertTrue(linkedList.remove(4));
+        assertEquals(5, linkedList.count());
+        assertEquals(linkedList.find(2), linkedList.head);
+        assertTrue(linkedList.remove(4));
+        assertEquals(4, linkedList.count());
+        assertEquals(linkedList.find(2), linkedList.head);
+        assertEquals(tail, linkedList.tail);
+    }
+
+    @Test
+    public void testRemoveOneFromTail() {
+        LinkedList linkedList = getWithDifferentValues();
+        LinkedList.Node tail = linkedList.tail;
+        LinkedList.Node head = linkedList.head;
+        assertTrue(linkedList.remove(6));
+        assertEquals(5, linkedList.count());
+        assertEquals(head, linkedList.head);
+        assertEquals(linkedList.find(5), linkedList.tail);
+    }
+
+    @Test
     public void testRemoveFromNull() {
         LinkedList linkedList = new LinkedList();
         assertFalse(linkedList.remove(3));
@@ -68,9 +92,39 @@ public class LinkedListTest {
     @Test
     public void testRemoveAllFromTail() {
         LinkedList linkedList = getWithEqualValuesInTail();
+        LinkedList.Node head = linkedList.head;
         linkedList.removeAll(4);
         assertEquals(3, linkedList.count());
+        assertEquals(head, linkedList.head);
+        assertEquals(linkedList.find(3), linkedList.tail);
         assertNull(linkedList.tail.next);
+    }
+
+    @Test
+    public void testRemoveOneByAllFromTail() {
+        LinkedList linkedList = getWithDifferentValues();
+        linkedList.removeAll(6);
+        assertEquals(5, linkedList.count());
+        assertNull(linkedList.tail.next);
+        assertEquals(linkedList.find(5), linkedList.tail);
+    }
+
+    @Test
+    public void testRemoveAllFromHead() {
+        LinkedList linkedList = getWithEqualValuesInHead();
+        linkedList.removeAll(3);
+        assertEquals(3, linkedList.count());
+        assertNull(linkedList.tail.next);
+    }
+
+    @Test
+    public void testRemoveAllFromMiddle() {
+        LinkedList linkedList = getWithEqualValuesInMiddle();
+        LinkedList.Node head = linkedList.head;
+        linkedList.removeAll(5);
+        assertEquals(4, linkedList.count());
+        assertNull(linkedList.tail.next);
+        assertEquals(head, linkedList.head);
     }
 
     @Test
@@ -138,6 +192,28 @@ public class LinkedListTest {
         linkedList.addInTail(new LinkedList.Node(2));
         linkedList.addInTail(new LinkedList.Node(3));
         linkedList.addInTail(new LinkedList.Node(4));
+        linkedList.addInTail(new LinkedList.Node(4));
+        linkedList.addInTail(new LinkedList.Node(4));
+        return linkedList;
+    }
+
+    private LinkedList getWithEqualValuesInHead() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addInTail(new LinkedList.Node(3));
+        linkedList.addInTail(new LinkedList.Node(3));
+        linkedList.addInTail(new LinkedList.Node(3));
+        linkedList.addInTail(new LinkedList.Node(4));
+        linkedList.addInTail(new LinkedList.Node(4));
+        linkedList.addInTail(new LinkedList.Node(4));
+        return linkedList;
+    }
+
+    private LinkedList getWithEqualValuesInMiddle() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addInTail(new LinkedList.Node(3));
+        linkedList.addInTail(new LinkedList.Node(3));
+        linkedList.addInTail(new LinkedList.Node(5));
+        linkedList.addInTail(new LinkedList.Node(5));
         linkedList.addInTail(new LinkedList.Node(4));
         linkedList.addInTail(new LinkedList.Node(4));
         return linkedList;
