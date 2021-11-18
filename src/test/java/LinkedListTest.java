@@ -220,6 +220,33 @@ public class LinkedListTest {
         assertEquals(3, nodes.size());
     }
 
+    @Test
+    public void testSumLinkedList() {
+        LinkedList linkedList1 = getWithDifferentValues();
+        LinkedList linkedList2 = getWithDifferentValues();
+        LinkedList linkedListSum = LinkedList.getLinkedListSum(linkedList1, linkedList2);
+
+        assertNotNull(linkedListSum);
+        assertEquals(linkedListSum.count(), linkedList1.count());
+        assertEquals(linkedListSum.count(), linkedList2.count());
+        assertEquals(2, linkedListSum.head.value);
+        assertEquals(12, linkedListSum.tail.value);
+        assertNotNull(linkedListSum.find(4));
+        assertNotNull(linkedListSum.find(6));
+        assertNotNull(linkedListSum.find(8));
+        assertNotNull(linkedListSum.find(10));
+    }
+
+    @Test
+    public void testSumLinkedListWithDifferentCounts() {
+        LinkedList linkedList1 = getWithDifferentValues();
+        LinkedList linkedList2 = new LinkedList();
+        linkedList2.addInTail(new LinkedList.Node(34));
+        LinkedList linkedListSum = LinkedList.getLinkedListSum(linkedList1, linkedList2);
+
+        assertNull(linkedListSum);
+    }
+
     private LinkedList getWithDifferentValues() {
         LinkedList linkedList = new LinkedList();
         linkedList.addInTail(new LinkedList.Node(1));
