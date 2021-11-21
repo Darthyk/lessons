@@ -141,22 +141,20 @@ public class LinkedList
     }
 
     public static LinkedList getLinkedListSum(LinkedList list1, LinkedList list2) {
+        LinkedList sum = new LinkedList();
         if (list1.count() == list2.count()) {
-            LinkedList sum = new LinkedList();
             Node node = list1.head;
             Node node1 = list2.head;
             Node sumNode;
-            while (node != null && node1 != null) {
+            while (node != null) {
                 sumNode = new Node(node.value + node1.value);
                 sum.addInTail(sumNode);
 
                 node = node.next;
                 node1 = node1.next;
             }
-            return sum;
-        } else {
-            return null;
         }
+        return sum;
     }
 
     static class Node
