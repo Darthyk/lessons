@@ -70,6 +70,11 @@ public class DynArrayTest {
         assertEquals(4, array.getItem(4));
         assertEquals(6, array.count);
         assertEquals(16, array.capacity);
+        try {
+            array.insert(20, 20);
+        } catch (Exception e) {
+            assertEquals(ArrayIndexOutOfBoundsException.class, e.getClass());
+        }
     }
 
     @Test
@@ -135,6 +140,14 @@ public class DynArrayTest {
         assertEquals(15, array.count);
         assertEquals(15, array.getItem(array.count-1));
         assertEquals(21, array.capacity);
+        int currentCount = array.count;
+        for (int i = currentCount - 1; i > 8; i--) {
+            array.remove(i);
+            if (i > 9) {
+                assertEquals(21, array.capacity);
+            }
+        }
+        assertEquals(16, array.capacity);
     }
 
     private DynArray getFullDynArray() {
