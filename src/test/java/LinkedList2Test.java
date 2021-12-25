@@ -10,7 +10,7 @@ public class LinkedList2Test {
     @Test
     public void testFindExistingValue() {
         LinkedList2 linkedList2 = getListWithDifferentValues();
-        Node node = linkedList2.find(4);
+        Node2 node = linkedList2.find(4);
         assertNotNull(node);
     }
 
@@ -29,28 +29,28 @@ public class LinkedList2Test {
     @Test
     public void testFindAllExistingValues() {
         LinkedList2 linkedList2 = getListWith3EqualValues();
-        ArrayList<Node> nodes = linkedList2.findAll(4);
+        ArrayList<Node2> nodes = linkedList2.findAll(4);
         assertEquals(3, nodes.size());
     }
 
     @Test
     public void testFind1ValueByFindAll() {
         LinkedList2 linkedList2 = getListWith3EqualValues();
-        ArrayList<Node> nodes = linkedList2.findAll(1);
+        ArrayList<Node2> nodes = linkedList2.findAll(1);
         assertEquals(1, nodes.size());
     }
 
     @Test
     public void testFindNotExistingNodeByFindAll() {
         LinkedList2 linkedList2 = getListWith3EqualValues();
-        ArrayList<Node> nodes = linkedList2.findAll(1000);
+        ArrayList<Node2> nodes = linkedList2.findAll(1000);
         assertTrue(nodes.isEmpty());
     }
 
     @Test
     public void testFindFindAllInEmptyList() {
         LinkedList2 linkedList2 = new LinkedList2();
-        ArrayList<Node> nodes = linkedList2.findAll(1000);
+        ArrayList<Node2> nodes = linkedList2.findAll(1000);
         assertTrue(nodes.isEmpty());
     }
 
@@ -83,9 +83,9 @@ public class LinkedList2Test {
     @Test
     public void testRemoveFromMiddle() {
         LinkedList2 linkedList2 = getListWithDifferentValues();
-        Node tail = linkedList2.tail;
-        Node head = linkedList2.head;
-        Node node = linkedList2.find(3);
+        Node2 tail = linkedList2.tail;
+        Node2 head = linkedList2.head;
+        Node2 node = linkedList2.find(3);
         assertTrue(linkedList2.remove(3));
         assertEquals(5, linkedList2.count());
         assertEquals(node.prev, linkedList2.find(2));
@@ -114,7 +114,7 @@ public class LinkedList2Test {
     @Test
     public void testRemoveOneFromOne() {
         LinkedList2 linkedList2 = new LinkedList2();
-        linkedList2.addInTail(new Node(1));
+        linkedList2.addInTail(new Node2(1));
         assertEquals(1, linkedList2.count());
         assertEquals(linkedList2.tail, linkedList2.find(1));
         assertEquals(linkedList2.head, linkedList2.find(1));
@@ -200,8 +200,8 @@ public class LinkedList2Test {
     @Test
     public void testInsertAfterHead() {
         LinkedList2 linkedList2 = getListWithDifferentValues();
-        Node node = linkedList2.find(1);
-        Node nodeToInsert = new Node(8);
+        Node2 node = linkedList2.find(1);
+        Node2 nodeToInsert = new Node2(8);
         linkedList2.insertAfter(node, nodeToInsert);
         assertEquals(7, linkedList2.count());
         assertEquals(linkedList2.find(1), linkedList2.head);
@@ -215,8 +215,8 @@ public class LinkedList2Test {
     @Test
     public void testInsertAfterTail() {
         LinkedList2 linkedList2 = getListWithDifferentValues();
-        Node node = linkedList2.find(6);
-        Node nodeToInsert = new Node(8);
+        Node2 node = linkedList2.find(6);
+        Node2 nodeToInsert = new Node2(8);
         linkedList2.insertAfter(node, nodeToInsert);
         assertEquals(7, linkedList2.count());
         assertEquals(linkedList2.find(8), linkedList2.tail);
@@ -227,8 +227,8 @@ public class LinkedList2Test {
     @Test
     public void testInsertInEmptyList() {
         LinkedList2 linkedList2 = new LinkedList2();
-        Node node = new Node(4);
-        linkedList2.insertAfter(node, new Node(5));
+        Node2 node = new Node2(4);
+        linkedList2.insertAfter(node, new Node2(5));
         assertEquals(1, linkedList2.count());
         assertEquals(linkedList2.head, linkedList2.find(5));
         assertEquals(linkedList2.tail, linkedList2.find(5));
@@ -239,7 +239,7 @@ public class LinkedList2Test {
     @Test
     public void testInsertInHead() {
         LinkedList2 linkedList2 = getListWithDifferentValues();
-        Node node = new Node(44);
+        Node2 node = new Node2(44);
         linkedList2.insertAfter(null, node);
         assertEquals(7, linkedList2.count());
         assertEquals(linkedList2.head, linkedList2.find(44));
@@ -250,56 +250,56 @@ public class LinkedList2Test {
 
     private LinkedList2 getListWithDifferentValues() {
         LinkedList2 linkedList2 = new LinkedList2();
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(2));
-        linkedList2.addInTail(new Node(3));
-        linkedList2.addInTail(new Node(4));
-        linkedList2.addInTail(new Node(5));
-        linkedList2.addInTail(new Node(6));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(2));
+        linkedList2.addInTail(new Node2(3));
+        linkedList2.addInTail(new Node2(4));
+        linkedList2.addInTail(new Node2(5));
+        linkedList2.addInTail(new Node2(6));
         return linkedList2;
     }
 
     private LinkedList2 getListWith3EqualValues() {
         LinkedList2 linkedList2 = new LinkedList2();
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(2));
-        linkedList2.addInTail(new Node(4));
-        linkedList2.addInTail(new Node(4));
-        linkedList2.addInTail(new Node(5));
-        linkedList2.addInTail(new Node(4));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(2));
+        linkedList2.addInTail(new Node2(4));
+        linkedList2.addInTail(new Node2(4));
+        linkedList2.addInTail(new Node2(5));
+        linkedList2.addInTail(new Node2(4));
         return linkedList2;
     }
 
     private LinkedList2 getListWith3EqualValuesInHead() {
         LinkedList2 linkedList2 = new LinkedList2();
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(4));
-        linkedList2.addInTail(new Node(5));
-        linkedList2.addInTail(new Node(6));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(4));
+        linkedList2.addInTail(new Node2(5));
+        linkedList2.addInTail(new Node2(6));
         return linkedList2;
     }
 
     private LinkedList2 getListWith3EqualValuesInTail() {
         LinkedList2 linkedList2 = new LinkedList2();
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(2));
-        linkedList2.addInTail(new Node(3));
-        linkedList2.addInTail(new Node(6));
-        linkedList2.addInTail(new Node(6));
-        linkedList2.addInTail(new Node(6));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(2));
+        linkedList2.addInTail(new Node2(3));
+        linkedList2.addInTail(new Node2(6));
+        linkedList2.addInTail(new Node2(6));
+        linkedList2.addInTail(new Node2(6));
         return linkedList2;
     }
 
     private LinkedList2 getListWithAllEqualValues() {
         LinkedList2 linkedList2 = new LinkedList2();
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(1));
-        linkedList2.addInTail(new Node(1));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(1));
+        linkedList2.addInTail(new Node2(1));
         return linkedList2;
     }
 }

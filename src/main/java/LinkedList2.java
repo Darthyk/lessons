@@ -2,8 +2,8 @@ import java.util.*;
 
 public class LinkedList2
 {
-    public Node head;
-    public Node tail;
+    public Node2 head;
+    public Node2 tail;
 
     public LinkedList2()
     {
@@ -11,7 +11,7 @@ public class LinkedList2
         tail = null;
     }
 
-    public void addInTail(Node _item)
+    public void addInTail(Node2 _item)
     {
         if (head == null) {
             this.head = _item;
@@ -24,10 +24,10 @@ public class LinkedList2
         this.tail = _item;
     }
 
-    public Node find(int _value)
+    public Node2 find(int _value)
     {
         // здесь будет ваш код поиска
-        Node node = this.head;
+        Node2 node = this.head;
         while (node != null) {
             if (node.value == _value) {
                 return node;
@@ -37,11 +37,11 @@ public class LinkedList2
         return null;
     }
 
-    public ArrayList<Node> findAll(int _value)
+    public ArrayList<Node2> findAll(int _value)
     {
-        ArrayList<Node> nodes = new ArrayList<Node>();
+        ArrayList<Node2> nodes = new ArrayList<Node2>();
         // здесь будет ваш код поиска всех узлов по заданному значению
-        Node node = this.head;
+        Node2 node = this.head;
         while (node != null) {
             if (node.value == _value) {
                 nodes.add(node);
@@ -54,7 +54,7 @@ public class LinkedList2
     public boolean remove(int _value)
     {
         // здесь будет ваш код удаления одного узла по заданному значению
-        Node node = this.head;
+        Node2 node = this.head;
         while (node != null) {
             if (node.value == _value) {
                 removeNode(node);
@@ -68,7 +68,7 @@ public class LinkedList2
     public void removeAll(int _value)
     {
         // здесь будет ваш код удаления всех узлов по заданному значению
-        Node node = this.head;
+        Node2 node = this.head;
         while (node != null) {
             if (node.value == _value) {
                 removeNode(node);
@@ -77,7 +77,7 @@ public class LinkedList2
         }
     }
 
-    private void removeNode(Node node) {
+    private void removeNode(Node2 node) {
         if (node.equals(this.head) && node.equals(this.tail)) {
             this.head = null;
             this.tail = null;
@@ -88,8 +88,8 @@ public class LinkedList2
             this.tail = node.prev;
             this.tail.next = null;
         } else {
-            Node previous = node.prev;
-            Node next = node.next;
+            Node2 previous = node.prev;
+            Node2 next = node.next;
             previous.next = next;
             next.prev = previous;
         }
@@ -105,7 +105,7 @@ public class LinkedList2
     public int count()
     {
         int count = 0;
-        Node node = this.head;
+        Node2 node = this.head;
         while (node != null) {
             count++;
             node = node.next;
@@ -113,7 +113,7 @@ public class LinkedList2
         return count; // здесь будет ваш код подсчёта количества элементов в списке
     }
 
-    public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
+    public void insertAfter(Node2 _nodeAfter, Node2 _nodeToInsert)
     {
         // здесь будет ваш код вставки узла после заданного узла
         if (this.head == null) {
@@ -123,11 +123,11 @@ public class LinkedList2
             _nodeToInsert.prev = null;
             this.head = _nodeToInsert;
         } else {
-            Node node = find(_nodeAfter.value);
+            Node2 node = find(_nodeAfter.value);
             if (this.tail.equals(node)) {
                 addInTail(_nodeToInsert);
             } else {
-                Node nodeNext = node.next;
+                Node2 nodeNext = node.next;
                 node.next = _nodeToInsert;
                 _nodeToInsert.next = nodeNext;
             }
@@ -138,13 +138,13 @@ public class LinkedList2
     }
 }
 
-class Node
+class Node2
 {
     public int value;
-    public Node next;
-    public Node prev;
+    public Node2 next;
+    public Node2 prev;
 
-    public Node(int _value)
+    public Node2(int _value)
     {
         value = _value;
         next = null;
