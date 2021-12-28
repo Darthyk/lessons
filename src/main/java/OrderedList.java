@@ -28,7 +28,7 @@ public class OrderedList<T>
 
     public int compare(T v1, T v2)
     {
-        if (v1 instanceof Number && v2 instanceof Number) {
+        if (v1.getClass() == Integer.class) {
             if ((int) v1 < (int) v2) {
                 return -1;
             }
@@ -38,79 +38,78 @@ public class OrderedList<T>
                 return 1;
             }
         } else {
-            String trimmed1 = ((String) v1).trim();
-            String trimmed2 = ((String) v2).trim();
-            return trimmed1.compareTo(trimmed2);
+           return  (v1.toString().trim()).compareTo(v2.toString().trim());
         }
-        //return 0;
-        // -1 если v1 < v2
-        // 0 если v1 == v2
-        // +1 если v1 > v2
     }
 
     public void add(T value)
     {
-        Node<T> node = new Node<>(value);
         if (head == null) {
-            head = node;
-            tail = node;
+            addInTail(new Node(value));
+            return;
+        }
+        if (_ascending == true) {
+            addInAsc(new Node<>(value));
         } else {
-            if (checkForAddInHeadOrTail(node)) {
-                return;
-            }
-
-            Node<T> currNode = head;
-            while (currNode != null) {
-                if (_ascending) {
-                    if (compare(node.value, currNode.value) > 0 && compare(node.value, currNode.next.value) <= 0) {
-                        node.next = currNode.next;
-                        node.prev = currNode;
-                        currNode.next.prev = node;
-                        currNode.next = node;
-                    }
-                } else {
-                    if (compare(node.value, currNode.value) < 0 && compare(node.value, currNode.next.value) >= 0) {
-                        node.next = currNode.next;
-                        node.prev = currNode;
-                        currNode.next.prev = node;
-                        currNode.next = node;
-                    }
-                }
-                currNode = currNode.next;
-            }
+            addInDesc(new Node<>(value));
         }
         // автоматическая вставка value 
         // в нужную позицию
     }
 
-    private boolean checkForAddInHeadOrTail(Node<T> node) {
-        boolean result = false;
-        if (_ascending && compare(node.value, head.value) < 0) {
-            addInHead(node);
-            result = true;
-        } else if (_ascending && compare(node.value, tail.value) > 0) {
-            addInTail(node);
-            result = true;
-        } else if (!_ascending && compare(node.value, head.value) > 0) {
-            addInHead(node);
-            result = true;
-        } else if (!_ascending && compare(node.value, tail.value) < 0) {
-            addInTail(node);
-            result = true;
+    void addInAsc(Node<T> item) {
+        Node<T> node = head;
+        while (node != null && compare(item.value, node.value) >= 0) {
+            node = node.next;
         }
-        return result;
+        if (node == null) {
+            addInTail(item);
+            return;
+        }
+
+        item.prev = node.prev;
+        if (head != node) {
+            node.prev.next = item;
+        } else {
+            head = item;
+        }
+        node.prev = item;
+        item.next = node;
+
     }
 
-    private void addInTail(Node<T> node) {
-        node.prev = tail;
-        node.prev.next = node;
+    void addInDesc(Node<T> item) {
+        Node<T> node = head;
+
+        while (node != null && compare(item.value, node.value) <= 0) {
+            node = node.next;
+        }
+
+        if (node == null) {
+            addInTail(item);
+            return;
+        }
+        item.prev = node.prev;
+
+        if (head != node) {
+            node.prev.next = item;
+        } else {
+            head = item;
+        }
+        node.prev = item;
+        item.next = node;
+    }
+
+    public void addInTail(Node<T> node) {
+        if (head == null) {
+            head = node;
+            node.prev = null;
+            node.next = null;
+        } else {
+            tail.next = node;
+            node.prev = tail;
+        }
         tail = node;
-    }
-
-    private void addInHead(Node<T> node) {
-        head.prev = node;
-        node.next = head;
-        head = node;
     }
 
     public Node<T> find(T val)
@@ -128,20 +127,27 @@ public class OrderedList<T>
     public void delete(T val)
     {
         Node<T> node = find(val);
-        if (node.equals(head) && node.equals(tail)) {
-            tail = null;
-            head = null;
-        } else if (node.equals(head)) {
-            head = node.next;
-            head.prev = null;
-        } else if (node.equals(tail)) {
-            tail = node.prev;
-            tail.next = null;
-        } else {
-            Node<T> prev = node.prev;
-            Node<T> next = node.next;
-            prev.next = next;
-            next.prev = prev;
+        if (node != null) {
+            if (node.prev == null && node.next == null) {
+                head = null;
+                tail = null;
+                return;
+            }
+            if (node.prev == null) {
+                head = node.next;
+                node.next.prev = null;
+                return;
+            }
+            if (node.next == null) {
+                node.prev.next = null;
+                tail = node.prev;
+                node.prev = null;
+                return;
+            }
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+            node.next = null;
+            node.prev = null;
         }
         // здесь будет ваш код
     }
