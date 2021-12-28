@@ -29,7 +29,14 @@ public class OrderedList<T>
     public int compare(T v1, T v2)
     {
         if (v1 instanceof Number && v2 instanceof Number) {
-            return Integer.compare((int) v1, (int) v2);
+            if ((int) v1 < (int) v2) {
+                return -1;
+            }
+            if ((int) v1 == (int) v2) {
+                return 0;
+            } else {
+                return 1;
+            }
         } else {
             String trimmed1 = ((String) v1).trim();
             String trimmed2 = ((String) v2).trim();
