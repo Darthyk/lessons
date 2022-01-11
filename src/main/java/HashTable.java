@@ -25,10 +25,7 @@ public class HashTable
             if (slots[hash] == null) {
                 return hash;
             } else {
-                if (slots[hash].equals(value)) {
-                    return -1;
-                }
-                hash += step;
+                hash = (hash + step) % size;
             }
         }
         // находит индекс пустого слота для значения, или -1
@@ -53,13 +50,13 @@ public class HashTable
     public int find(String value)
     {
         int hash = hashFun(value);
-        for (int i = 0; i < (size / step); i++) {
+        for (int i = 0; i < size; i++) {
             if (slots[hash] != null) {
                 if (slots[hash].equals(value)) {
                     return hash;
                 }
             } else {
-                hash += step;
+                hash = (hash + step) % size;
             }
         }
 
