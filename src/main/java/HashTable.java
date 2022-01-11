@@ -54,9 +54,9 @@ public class HashTable
             if (slots[hash] != null) {
                 if (slots[hash].equals(value)) {
                     return hash;
+                } else {
+                    hash = (hash + step) % size;
                 }
-            } else {
-                hash = (hash + step) % size;
             }
         }
 
