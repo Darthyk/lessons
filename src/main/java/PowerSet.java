@@ -92,12 +92,6 @@ public class PowerSet
                 }
         }
 
-        for (String value : set2.hashtable.values()) {
-            if (!hashtable.contains(value)) {
-                differenceSet.put(value);
-            }
-        }
-
         return differenceSet;
     }
 

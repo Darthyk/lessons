@@ -81,18 +81,15 @@ public class PowerSetTest {
         assertTrue(difference1.get("test4"));
 
         PowerSet difference2 = set.difference(set3);
-        assertEquals(7, difference2.size());
+        assertEquals(5, difference2.size());
         assertTrue(difference2.get("test1"));
         assertTrue(difference2.get("test2"));
         assertTrue(difference2.get("test3"));
         assertTrue(difference2.get("test5"));
-        assertTrue(difference2.get("test55"));
         assertTrue(difference2.get("test4"));
-        assertTrue(difference2.get("yrrg5"));
 
         PowerSet difference3 = set.difference(set4);
-        assertEquals(5, difference3.size());
-        assertTrue(difference3.get("test55"));
+        assertEquals(4, difference3.size());
         assertTrue(difference3.get("test2"));
         assertTrue(difference3.get("test3"));
         assertTrue(difference3.get("test5"));
