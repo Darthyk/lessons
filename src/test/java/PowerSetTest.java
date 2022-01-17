@@ -46,6 +46,7 @@ public class PowerSetTest {
         set4.put("test55");
         PowerSet set5 = new PowerSet();
 
+        assertTrue(set.isSubset(set));
         assertTrue(set.isSubset(set2));
         assertFalse(set.isSubset(set3));
         assertFalse(set.isSubset(set4));

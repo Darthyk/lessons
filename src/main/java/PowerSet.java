@@ -103,7 +103,7 @@ public class PowerSet
         if (set2.size() == 0) {
             return true;
         }
-        if (size() > set2.size()) {
+        if (size() >= set2.size()) {
             boolean result;
             for (String value : set2.hashtable.values()) {
                 result = hashtable.contains(value);
