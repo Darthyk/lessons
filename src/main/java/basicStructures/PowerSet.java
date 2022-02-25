@@ -1,3 +1,5 @@
+package basicStructures;
+
 import java.util.Hashtable;
 
 public class PowerSet

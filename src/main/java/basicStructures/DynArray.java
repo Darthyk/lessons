@@ -1,3 +1,5 @@
+package basicStructures;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -12,7 +14,7 @@ public class DynArray<T>
     public DynArray(Class clz)
     {
         clazz = clz; // нужен для безопасного приведения типов
-        // new DynArray<Integer>(Integer.class);
+        // new basicStructures.DynArray<Integer>(Integer.class);
 
         count = 0;
         makeArray(minCapacity);

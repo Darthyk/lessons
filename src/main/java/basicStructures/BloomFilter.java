@@ -1,3 +1,5 @@
+package basicStructures;
+
 public class BloomFilter
 {
     public int filter_len;

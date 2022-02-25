@@ -1,3 +1,5 @@
+import basicStructures.LinkedList2;
+import basicStructures.Node2;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

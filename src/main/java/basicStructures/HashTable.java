@@ -1,3 +1,5 @@
+package basicStructures;
+
 public class HashTable
 {
     public int size;

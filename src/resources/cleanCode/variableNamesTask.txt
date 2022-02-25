@@ -1,0 +1,35 @@
+i - iterationNumber
+// номер итерации
+
+count - numberOfElements
+// количество элементов
+
+node - currentNode
+// текущая нода (узел)
+
+_ascending - isAscendingSortType
+// тип сортировки
+
+next - nextNode
+// следующая нода
+
+prev - previousNode
+// предыдущая нода
+
+item - nodeToInsert
+// нода для вставки
+
+r - orderedListAsArrayList
+// сортированный список как стандартный список
+
+set2 - setToCompareWithCurrent
+// Сет для сравнения с текущим
+
+result - isSetContainsValue
+// содержит ли сет значение
+
+filter_len - filterLength
+// длина фильтра
+
+code - charCode
+// код символа
