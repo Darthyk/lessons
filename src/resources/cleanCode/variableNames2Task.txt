@@ -1,0 +1,24 @@
+6.1
+slot - emptySlotIndex
+count - numberOfObjects
+capacity - arrayCapacity
+head - listHead
+tail - listTail
+
+6.2
+hash - hashFunction
+code - unicodeValue
+mask - bitMask
+slot - objectHash
+
+6.3
+previousNode
+summarizedNode
+intersectionSet
+
+6.4
+hash - hashFunction
+code - unicodeValue
+slot - objectHash
+count - numberOfObjects
+tail - listTail
