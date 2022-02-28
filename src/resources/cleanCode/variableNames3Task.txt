@@ -1,0 +1,18 @@
+7.1
+_ascending - isAscending
+result - isSubset
+asc - isAscending
+getAll - getAllEquipment
+submitted - isDataSubmitted
+
+7.2
+submitted
+
+7.3
+i - workDay
+
+7.4
+head/tail
+
+7.5
+всем :)
