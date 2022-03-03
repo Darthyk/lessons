@@ -1,0 +1,12 @@
+code - unicodeValue
+count - numItems
+step - slotChangeStep
+sum - listItemsSum
+node1 - nodeToSum
+hits - requests
+min - minNumRequests
+e - equipment
+list - comparedEquipmentList
+array - allowedEquipment
+files - selectedFiles
+e - event
