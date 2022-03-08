@@ -1,0 +1,14 @@
+3.1
+DynArray - DynamicArray
+LinkedList2 - DoublyLinkedList
+
+3.2
+put - add
+getItem - get
+count - size
+find - get
+delete - remove
+findAll - getAll
+
+
+
