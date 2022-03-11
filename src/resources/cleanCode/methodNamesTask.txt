@@ -1,0 +1,11 @@
+hash1 - getBitMask //получаем битовую маску
+hash2 - getExtraBitMask //получаем еще одну битовую маску
+isValue - containsValue //содержит ли значение
+hashFun - getHashtableSlot //получаем слот в хэш таблице
+isKey - hasKey //имеется ли ключ
+union - getUnion //получить объединенный сет
+difference - getDifference //получить сет с разницей
+intersection - getIntersection //получить сет с пересечением
+remove - isRemoved //удалено ли значение
+get - hasSetValue //содержит ли сет значение
+seekSlot - getFreeSlot //получить свободный слот
