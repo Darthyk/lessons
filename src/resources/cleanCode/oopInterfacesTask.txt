@@ -1,0 +1,4 @@
+3.1
+BloomFilter filter = BloomFilter.fromLength(10);
+NativeCache cache = NativeCache.withSizeAndClass(10, Integer.class);
+OrderedList list = OrderedList.withAscendingOrder(true);
