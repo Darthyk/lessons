@@ -1,0 +1,6 @@
+magicNumber - HASH_SALT //не просто число, а число для составления хеша
+minCapacity - MINIMAL_CAPACITY //неизменяемая переменная
+step - STEP //неизменяемая переменная
+1.5 - DECREASE_CAPACITY_VALUE //неизменяемая переменная
+2 - INCREASE_CAPACITY_VALUE //неизменяемая переменная
+0.5 - DEALLOCATION_THRESHOLD //неизменяемая переменная
