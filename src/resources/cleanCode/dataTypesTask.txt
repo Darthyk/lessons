@@ -1,0 +1,10 @@
+return value.getBytes().length % size;
+if (size > 0) {return value.getBytes().length % size}
+// проверяем что размер кеша не пустой
+
+hash = hash % filter_len;
+if {filter_len > 0) {hash = hash % filter_len}
+// проверяем что фильтр Блюма не пустой
+
+boolean  containsValue = slots[slot] != null && slots[slot].equals(value);
+// более читабельное условие
