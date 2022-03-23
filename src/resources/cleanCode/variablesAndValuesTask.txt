@@ -1,0 +1,7 @@
+int magicNumber = 17
+private final int HASH_1_SALT = 17;
+//явно определил неизменяемую переменную константой
+
+step = 3
+private final int STEP = 3;
+//явно определил неизменяемую переменную константой
