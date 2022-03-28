@@ -1,0 +1,5 @@
+ArrayList deque - LinkedList deque
+ArrayList queue - LinkedList queue
+ArrayList for stack - LinkedList
+List<SugarBeet> sugarBeetList - LinkedList sugarBeet
+List<Peas> peasList - LinkedList<Peas> peasList
