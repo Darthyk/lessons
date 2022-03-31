@@ -1,0 +1,6 @@
+//Calculate fields that are not processed
+cultureStructure.removeAll(processedFields);
+
+//Coefficient 0.55 will be enough to have NAME_MISMATCH in case
+//when lastname match score is 1.0, but name match score is 0.0
+multipleWordMatchScore = (maxMatchScore + nameMatchScore) * MULTIPLE_WORD_MATCH_SCORE_COEFFICIENT;
