@@ -1,0 +1,13 @@
+// если это не то исключение, которое ищем, то пробрасываем его. Представление намерений
+if (!exceptionClass.isInstance(ex)) {
+    throw ex;
+}
+
+// Переполнения не должно произойти, т.к. вместимость char буфера такая же как и byte буфера. Пояснение
+ CoderResult codeResult = decoder.decode(byteBuffer, charBuffer, false);
+
+ @Test
+    @Ignore
+    public void testAddUserToAccount_UserNotFound() {
+        //ToDo ES: implement me
+    }
