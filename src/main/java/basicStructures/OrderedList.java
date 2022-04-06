@@ -2,20 +2,6 @@ package basicStructures;
 
 import java.util.*;
 
-
-class Node<T>
-{
-    public T value;
-    public Node<T> next, prev;
-
-    public Node(T _value)
-    {
-        value = _value;
-        next = null;
-        prev = null;
-    }
-}
-
 public class OrderedList<T>
 {
     public Node<T> head, tail;
@@ -173,7 +159,7 @@ public class OrderedList<T>
         return count; // здесь будет ваш код подсчёта количества элементов в списке
     }
 
-    ArrayList<Node<T>> getAll() // выдать все элементы упорядоченного 
+    public ArrayList<Node<T>> getAll() // выдать все элементы упорядоченного
     // списка в виде стандартного списка
     {
         ArrayList<Node<T>> r = new ArrayList<Node<T>>();

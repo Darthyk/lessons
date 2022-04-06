@@ -2,7 +2,7 @@ package basicStructures;
 
 import java.lang.reflect.Array;
 
-class NativeDictionary<T>
+public class NativeDictionary<T>
 {
     public int size;
     public String [] slots;

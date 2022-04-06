@@ -1,3 +1,4 @@
+/*
 import basicStructures.LinkedList2;
 import basicStructures.Node2;
 import java.util.ArrayList;
@@ -305,3 +306,4 @@ public class LinkedList2Test {
         return linkedList2;
     }
 }
+*/
