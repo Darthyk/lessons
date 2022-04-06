@@ -1,6 +1,6 @@
 package recursion;
 
-public class Exponentiation {
+public class Recursion {
     public static int doExponentiation(int n, int m) {
         int result = 1;
         if ( m > 0) {
