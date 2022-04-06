@@ -8,4 +8,12 @@ public class Recursion {
         }
         return result;
     }
+
+    public static int numberSum(int number) {
+        int result = 0;
+        if (number > 0) {
+            result += number % 10 + numberSum(number / 10);
+        }
+        return result;
+    }
 }
