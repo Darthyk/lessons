@@ -22,17 +22,15 @@ public class Recursion {
     public static int arrayLength(List<Integer> array) {
         if (array.isEmpty()) {
             return 0;
-        } else {
-            array.remove(0);
-            return 1 + arrayLength(array);
         }
+        array.remove(0);
+        return 1 + arrayLength(array);
     }
 
     public static boolean isPalindrome(String str) {
         if (str.length() <= 1) {
             return true;
-        } else {
-            return str.charAt(0) == str.charAt(str.length() - 1) && isPalindrome(str.substring(1, str.length() - 1));
         }
+        return str.charAt(0) == str.charAt(str.length() - 1) && isPalindrome(str.substring(1, str.length() - 1));
     }
 }
