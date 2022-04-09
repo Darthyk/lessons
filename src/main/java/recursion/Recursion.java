@@ -4,19 +4,17 @@ import java.util.List;
 
 public class Recursion {
     public static int doExponentiation(int n, int m) {
-        int result = 1;
         if ( m > 0) {
-            result = n * doExponentiation(n, m - 1);
+            return n * doExponentiation(n, m - 1);
         }
-        return result;
+        return 1;
     }
 
     public static int numberSum(int number) {
-        int result = 0;
         if (number > 0) {
-            result += number % 10 + numberSum(number / 10);
+            return number % 10 + numberSum(number / 10);
         }
-        return result;
+        return 0;
     }
 
     public static int arrayLength(List<Integer> array) {
