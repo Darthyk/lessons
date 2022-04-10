@@ -31,4 +31,23 @@ public class Recursion {
         }
         return str.charAt(0) == str.charAt(str.length() - 1) && isPalindrome(str.substring(1, str.length() - 1));
     }
+
+    public static void getEvenNumber(List<Integer> numbers) {
+        if (!numbers.isEmpty()) {
+            Integer integer = numbers.remove(0);
+            if (integer % 2 == 0) {
+                System.out.println(integer);
+            }
+            getEvenNumber(numbers);
+        }
+    }
+
+    public static void getEvenPosition(List<Integer> numbers) {
+        if (numbers.size() > 2) {
+            Integer integer = numbers.remove(0);
+            System.out.println(integer);
+            numbers.remove(0);
+            getEvenNumber(numbers);
+        }
+    }
 }

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import recursion.Recursion;
@@ -43,6 +42,17 @@ public class RecursionTest {
         assertTrue(Recursion.isPalindrome("a"));
         assertFalse(Recursion.isPalindrome("avav"));
     }
+
+    @Test
+    public void testEvenNumbers() {
+        Recursion.getEvenNumber(generateList(9));
+    }
+
+    @Test
+    public void testEvenPosition() {
+        Recursion.getEvenPosition(generateList(10));
+    }
+
 
     private List<Integer> generateList(int length) {
         List<Integer> list = new ArrayList<>();
