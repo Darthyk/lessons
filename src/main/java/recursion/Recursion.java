@@ -60,11 +60,11 @@ public class Recursion {
     }
 
     public static Integer getMaximum(List<Integer> numbers, int lastMax) {
-        if (numbers.size() > 1) {
+        if (numbers.size() >= 1) {
             if (lastMax <= numbers.get(0)) {
                 return getMaximum(numbers, numbers.remove(0));
             }
         }
-        return numbers.get(0);
+        return lastMax;
     }
 }

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import recursion.Recursion;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -56,13 +57,26 @@ public class RecursionTest {
 
     @Test
     public void testSecondMax() {
-        List<Integer> integers = generateList(8);
-        assertEquals(6, Recursion.getSecondMaximum(integers));
+       List<Integer> integers = generateList(8);
+       assertEquals(6, Recursion.getSecondMaximum(integers));
+        List<Integer> integers1 = generateReversedList(8);
+        assertEquals(7, Recursion.getSecondMaximum(integers1));
+        Integer[] array = {1, 3, 8, 3,5,8};
+        List<Integer> integers2 = Arrays.stream(array).collect(Collectors.toList());
+        assertEquals(8, Recursion.getSecondMaximum(integers2));
     }
 
     private List<Integer> generateList(int length) {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < length; i++) {
+            list.add(i);
+        }
+        return list;
+    }
+
+    private List<Integer> generateReversedList(int length) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = length; i > 0; i--) {
             list.add(i);
         }
         return list;
