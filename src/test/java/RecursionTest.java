@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import recursion.Recursion;
@@ -53,6 +54,11 @@ public class RecursionTest {
         Recursion.getEvenPosition(generateList(10));
     }
 
+    @Test
+    public void testSecondMax() {
+        List<Integer> integers = generateList(8);
+        assertEquals(6, Recursion.getSecondMaximum(integers));
+    }
 
     private List<Integer> generateList(int length) {
         List<Integer> list = new ArrayList<>();

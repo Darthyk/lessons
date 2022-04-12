@@ -1,5 +1,7 @@
 package recursion;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Recursion {
@@ -49,5 +51,20 @@ public class Recursion {
             numbers.remove(0);
             getEvenNumber(numbers);
         }
+    }
+
+    public static Integer getSecondMaximum(List<Integer> numbers) {
+        Integer firstMax = getMaximum(new ArrayList<>(numbers), numbers.get(0));
+        numbers.remove(firstMax);
+        return getMaximum(numbers, numbers.get(0));
+    }
+
+    public static Integer getMaximum(List<Integer> numbers, int lastMax) {
+        if (numbers.size() > 1) {
+            if (lastMax <= numbers.get(0)) {
+                return getMaximum(numbers, numbers.remove(0));
+            }
+        }
+        return numbers.get(0);
     }
 }
