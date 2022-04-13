@@ -53,19 +53,44 @@ public class Recursion {
         }
     }
 
-    public static Integer getSecondMaximum(List<Integer> numbers) {
-        Integer firstMax = getMaximum(new ArrayList<>(numbers), numbers.get(0));
-        numbers.remove(firstMax);
-        return getMaximum(numbers, numbers.get(0));
+    public static Integer getSecondMaximum(int[] numbers) {
+        quickSort(numbers, 0, numbers.length - 1);
+        return numbers[numbers.length - 2];
     }
 
-    public static Integer getMaximum(List<Integer> numbers, int lastMax) {
-        if (numbers.size() >= 1) {
+    public static int getMaximum(List<Integer> numbers, int lastMax) {
+        if (numbers.size() > 1) {
             if (lastMax <= numbers.get(0)) {
-                return getMaximum(numbers, numbers.remove(0));
+                return getMaximum(numbers, numbers.get(0));
             }
+            return getMaximum(numbers, lastMax);
         }
         return lastMax;
+    }
+
+    public static void quickSort(int[] numbers, int begin, int end) {
+        if (end <= begin) return;
+        int pilar = separator(numbers, begin, end);
+        quickSort(numbers, begin, pilar-1);
+        quickSort(numbers, pilar+1, end);
+    }
+
+    public static int separator(int[] numbers,int begin, int end) {
+        int pilar = end;
+
+        int counter = begin;
+        for (int i = begin; i < end; i++) {
+            if (numbers[i] < numbers[pilar]) {
+                int temp = numbers[counter];
+                numbers[counter] = numbers[i];
+                numbers[i] = temp;
+                counter++;
+            }
+        }
+        int temp = numbers[pilar];
+        numbers[pilar] = numbers[counter];
+        numbers[counter] = temp;
+        return counter;
     }
 
     public static Integer getSecondMaximum2(List<Integer> numbers) {
