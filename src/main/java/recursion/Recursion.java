@@ -70,25 +70,25 @@ public class Recursion {
 
     public static void quickSort(int[] numbers, int begin, int end) {
         if (end <= begin) return;
-        int pilar = separator(numbers, begin, end);
-        quickSort(numbers, begin, pilar-1);
-        quickSort(numbers, pilar+1, end);
+        int separator = separator(numbers, begin, end);
+        quickSort(numbers, begin, separator-1);
+        quickSort(numbers, separator+1, end);
     }
 
     public static int separator(int[] numbers,int begin, int end) {
-        int pilar = end;
+        int separator = end;
 
         int counter = begin;
         for (int i = begin; i < end; i++) {
-            if (numbers[i] < numbers[pilar]) {
+            if (numbers[i] < numbers[separator]) {
                 int temp = numbers[counter];
                 numbers[counter] = numbers[i];
                 numbers[i] = temp;
                 counter++;
             }
         }
-        int temp = numbers[pilar];
-        numbers[pilar] = numbers[counter];
+        int temp = numbers[separator];
+        numbers[separator] = numbers[counter];
         numbers[counter] = temp;
         return counter;
     }
