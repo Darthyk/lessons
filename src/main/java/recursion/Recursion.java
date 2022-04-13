@@ -70,7 +70,7 @@ public class Recursion {
 
     public static Integer getSecondMaximum2(List<Integer> numbers) {
         int max = numbers.remove(0);
-        int secondMax = numbers.remove(0);
+        int secondMax = numbers.get(0);
         for (Integer i : numbers) {
             if (i >= max) {
                 secondMax = max;

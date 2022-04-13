@@ -72,7 +72,7 @@ public class RecursionTest {
         assertEquals(6, Recursion.getSecondMaximum2(integers));
         List<Integer> integers1 = generateReversedList(8);
         assertEquals(7, Recursion.getSecondMaximum2(integers1));
-        Integer[] array = {1, 3, 8, 3,5,8};
+        Integer[] array = {1, 8, 8, 3,5,8};
         List<Integer> integers2 = Arrays.stream(array).collect(Collectors.toList());
         assertEquals(8, Recursion.getSecondMaximum2(integers2));
     }
