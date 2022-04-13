@@ -70,11 +70,15 @@ public class Recursion {
 
     public static Integer getSecondMaximum2(List<Integer> numbers) {
         int max = numbers.remove(0);
-        int secondMax = numbers.get(0);
+        int secondMax = Integer.MIN_VALUE;
         for (Integer i : numbers) {
-            if (i >= max) {
+            if (i > max) {
                 secondMax = max;
                 max = i;
+                continue;
+            }
+            if (i > secondMax) {
+                secondMax = i;
             }
         }
         return secondMax;
