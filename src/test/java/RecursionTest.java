@@ -66,6 +66,17 @@ public class RecursionTest {
         assertEquals(8, Recursion.getSecondMaximum(integers2));
     }
 
+    @Test
+    public void testSecondMax2() {
+        List<Integer> integers = generateList(8);
+        assertEquals(6, Recursion.getSecondMaximum2(integers));
+        List<Integer> integers1 = generateReversedList(8);
+        assertEquals(7, Recursion.getSecondMaximum2(integers1));
+        Integer[] array = {1, 3, 8, 3,5,8};
+        List<Integer> integers2 = Arrays.stream(array).collect(Collectors.toList());
+        assertEquals(8, Recursion.getSecondMaximum2(integers2));
+    }
+
     private List<Integer> generateList(int length) {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < length; i++) {
