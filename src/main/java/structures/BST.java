@@ -46,6 +46,7 @@ class BST<T>
     public BST(BSTNode<T> node)
     {
         Root = node;
+        nodeCount = node == null ? 0 : 1;
     }
 
     public BSTFind<T> FindNodeByKey(int key)
