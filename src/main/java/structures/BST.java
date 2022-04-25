@@ -109,20 +109,29 @@ class BST<T>
     }
 
     private BSTNode<T> findNode(BSTNode<T> root, int key) {
-        if (root == null || root.NodeKey == key) return root;
+        if (root == null || root.NodeKey == key) {
+            return root;
+        }
         BSTNode<T> node;
-        if (key < root.NodeKey) node = findNode(root.LeftChild, key);
-        else node = findNode(root.RightChild, key);
+        if (key < root.NodeKey) {
+            node = findNode(root.LeftChild, key);
+        } else {
+            node = findNode(root.RightChild, key);
+        }
         return node == null ? root : node;
     }
 
     private BSTNode<T> findMinNode(BSTNode<T> root) {
-        if (root.LeftChild == null) return root;
+        if (root.LeftChild == null) {
+            return root;
+        }
         return findMinNode(root.LeftChild);
     }
 
     private BSTNode<T> findMaxNode(BSTNode<T> root) {
-        if (root.RightChild == null) return root;
+        if (root.RightChild == null) {
+            return root;
+        }
         return findMaxNode(root.RightChild);
     }
 
