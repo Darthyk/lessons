@@ -1,3 +1,5 @@
+package basicStructures;
+
 import basicStructures.BloomFilter;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;

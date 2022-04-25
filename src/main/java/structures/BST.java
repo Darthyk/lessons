@@ -1,6 +1,5 @@
 package structures;
 
-import java.io.*;
 import java.util.*;
 
 
@@ -156,5 +155,75 @@ class BST<T>
             }
         }
         return root;
+    }
+
+    ArrayList<BSTNode> WideAllNodes() {
+        ArrayList<BSTNode> nodes = new ArrayList<>();
+        if (Root != null) {
+            runThroughLevelNodes(Root, nodes);
+        }
+        return nodes;
+    }
+
+    void runThroughLevelNodes(BSTNode node, ArrayList<BSTNode> nodes) {
+        ArrayDeque<BSTNode> queue = new ArrayDeque<>();
+        queue.offer(node);
+        while (!queue.isEmpty()) {
+            BSTNode bstNode = queue.poll();
+            nodes.add(bstNode);
+            if (bstNode.LeftChild != null) {
+                queue.offer(bstNode.LeftChild);
+            }
+            if (bstNode.RightChild != null) {
+                queue.offer(bstNode.RightChild);
+            }
+        }
+    }
+
+    public ArrayList<BSTNode> DeepAllNodes(int order) {
+        ArrayList<BSTNode> nodes = new ArrayList<>();
+        if (Root != null) {
+            switch (order) {
+                case 0:
+                    inOrderDeepSearch(Root, nodes);
+                    break;
+                case 1:
+                    postOrderDeepSearch(Root, nodes);
+                    break;
+                case 2:
+                    preOrderDeepSearch(Root, nodes);
+                    break;
+                default:
+                    return nodes;
+            }
+        }
+        return nodes;
+    }
+
+    private void inOrderDeepSearch(BSTNode<T> root, ArrayList<BSTNode> nodes) {
+        if (root == null) {
+            return;
+        }
+        inOrderDeepSearch(root.LeftChild, nodes);
+        nodes.add(root);
+        inOrderDeepSearch(root.RightChild, nodes);
+    }
+
+    private void postOrderDeepSearch(BSTNode<T> root, ArrayList<BSTNode> nodes) {
+        if (root == null) {
+            return;
+        }
+        postOrderDeepSearch(root.LeftChild, nodes);
+        postOrderDeepSearch(root.RightChild, nodes);
+        nodes.add(root);
+    }
+
+    private void preOrderDeepSearch(BSTNode<T> root, ArrayList<BSTNode> nodes) {
+        if (root == null) {
+            return;
+        }
+        nodes.add(root);
+        preOrderDeepSearch(root.LeftChild, nodes);
+        preOrderDeepSearch(root.RightChild, nodes);
     }
 }

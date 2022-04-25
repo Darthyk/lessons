@@ -1,3 +1,5 @@
+package basicStructures;
+
 import basicStructures.LinkedList;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
