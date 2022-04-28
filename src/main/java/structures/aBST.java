@@ -12,8 +12,8 @@ class aBST
         // правильно рассчитайте размер массива для дерева глубины depth:
         this.depth = depth;
         int tree_size = (int) Math.pow(this.depth + 1, 2) - 1;
-        Tree = new Integer[ tree_size > 0 ? tree_size : 1 ];
-        for(int i=0; i<tree_size; i++) {
+        Tree = new Integer[tree_size > 0 ? tree_size : 1];
+        for (int i = 0; i < tree_size; i++) {
             Tree[i] = null;
         }
     }
@@ -21,20 +21,19 @@ class aBST
     public Integer FindKeyIndex(int key)
     {
         // ищем в массиве индекс ключа
-        int index = 0;
         int level = 0;
+        int index = 0;
         while (level <= depth) {
             if (Tree[index] == null) {
                 return -index;
             }
-            if (Tree[index] == key) {
+            else if (Tree[index] == key) {
                 return index;
             }
-            if (Tree[index] < key) {
-                index = 2 * index + 1;
-            }
-            if (Tree[index] > key) {
-                index = 2 * index + 2;
+            if (key < Tree[index]) {
+                index = index * 2 + 1;
+            } else {
+                index = index * 2 + 2;
             }
             level++;
         }
