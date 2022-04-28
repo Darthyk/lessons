@@ -11,8 +11,8 @@ class aBST
     {
         // правильно рассчитайте размер массива для дерева глубины depth:
         this.depth = depth;
-        int tree_size = (int)(Math.pow(2, depth + 1) - 1);
-        Tree = new Integer[ tree_size ];
+        int tree_size = (int) Math.pow(this.depth + 1, 2) - 1;
+        Tree = new Integer[ tree_size > 0 ? tree_size : 1 ];
         for(int i=0; i<tree_size; i++) {
             Tree[i] = null;
         }
