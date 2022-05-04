@@ -3,15 +3,15 @@ package structures;
 import java.util.*;
 
 
-class BSTNode<T>
+class BSTNode1<T>
 {
     public int NodeKey; // ключ узла
     public T NodeValue; // значение в узле
-    public BSTNode<T> Parent; // родитель или null для корня
-    public BSTNode<T> LeftChild; // левый потомок
-    public BSTNode<T> RightChild; // правый потомок
+    public BSTNode1<T> Parent; // родитель или null для корня
+    public BSTNode1<T> LeftChild; // левый потомок
+    public BSTNode1<T> RightChild; // правый потомок
 
-    public BSTNode(int key, T val, BSTNode<T> parent)
+    public BSTNode1(int key, T val, BSTNode1<T> parent)
     {
         NodeKey = key;
         NodeValue = val;
@@ -25,7 +25,7 @@ class BSTNode<T>
 class BSTFind<T>
 {
     // null если в дереве вообще нету узлов
-    public BSTNode<T> Node;
+    public BSTNode1<T> Node;
 
     // true если узел найден
     public boolean NodeHasKey;
@@ -38,11 +38,11 @@ class BSTFind<T>
 
 class BST<T>
 {
-    BSTNode<T> Root; // корень дерева, или null
+    BSTNode1<T> Root; // корень дерева, или null
 
     private int nodeCount;
 
-    public BST(BSTNode<T> node)
+    public BST(BSTNode1<T> node)
     {
         Root = node;
         nodeCount = node == null ? 0 : 1;
@@ -67,18 +67,18 @@ class BST<T>
         if (bstFind.NodeHasKey) {
             return false; // если ключ уже есть
         }
-        BSTNode<T> bstNode = new BSTNode<>(key, val, bstFind.Node);
+        BSTNode1<T> bstNode1 = new BSTNode1<>(key, val, bstFind.Node);
         if (bstFind.Node == null) {
-            Root = bstNode;
+            Root = bstNode1;
         } else {
-            bstFind.Node.LeftChild = bstFind.ToLeft ? bstNode : bstFind.Node.LeftChild;
-            bstFind.Node.RightChild = !bstFind.ToLeft ? bstNode : bstFind.Node.RightChild;
+            bstFind.Node.LeftChild = bstFind.ToLeft ? bstNode1 : bstFind.Node.LeftChild;
+            bstFind.Node.RightChild = !bstFind.ToLeft ? bstNode1 : bstFind.Node.RightChild;
         }
         nodeCount++;
         return true;
     }
 
-    public BSTNode<T> FinMinMax(BSTNode<T> FromNode, boolean FindMax)
+    public BSTNode1<T> FinMinMax(BSTNode1<T> FromNode, boolean FindMax)
     {
         // ищем максимальный/минимальный ключ в поддереве
         if (FromNode == null) {
@@ -107,11 +107,11 @@ class BST<T>
         return nodeCount; // количество узлов в дереве
     }
 
-    private BSTNode<T> findNode(BSTNode<T> root, int key) {
+    private BSTNode1<T> findNode(BSTNode1<T> root, int key) {
         if (root == null || root.NodeKey == key) {
             return root;
         }
-        BSTNode<T> node;
+        BSTNode1<T> node;
         if (key < root.NodeKey) {
             node = findNode(root.LeftChild, key);
         } else {
@@ -120,21 +120,21 @@ class BST<T>
         return node == null ? root : node;
     }
 
-    private BSTNode<T> findMinNode(BSTNode<T> root) {
+    private BSTNode1<T> findMinNode(BSTNode1<T> root) {
         if (root.LeftChild == null) {
             return root;
         }
         return findMinNode(root.LeftChild);
     }
 
-    private BSTNode<T> findMaxNode(BSTNode<T> root) {
+    private BSTNode1<T> findMaxNode(BSTNode1<T> root) {
         if (root.RightChild == null) {
             return root;
         }
         return findMaxNode(root.RightChild);
     }
 
-    private BSTNode<T> remove(BSTNode<T> root, int key) {
+    private BSTNode1<T> remove(BSTNode1<T> root, int key) {
         if (root == null) {
             return null;
         }
@@ -148,7 +148,7 @@ class BST<T>
             } else if (root.RightChild == null) {
                 return root.LeftChild;
             } else {
-                BSTNode<T> node = findMinNode(root.RightChild);
+                BSTNode1<T> node = findMinNode(root.RightChild);
                 root.NodeKey = node.NodeKey;
                 root.NodeValue = node.NodeValue;
                 root.RightChild = remove(root.RightChild, node.NodeKey);
@@ -157,31 +157,31 @@ class BST<T>
         return root;
     }
 
-    ArrayList<BSTNode> WideAllNodes() {
-        ArrayList<BSTNode> nodes = new ArrayList<>();
+    ArrayList<BSTNode1> WideAllNodes() {
+        ArrayList<BSTNode1> nodes = new ArrayList<>();
         if (Root != null) {
             runThroughLevelNodes(Root, nodes);
         }
         return nodes;
     }
 
-    void runThroughLevelNodes(BSTNode node, ArrayList<BSTNode> nodes) {
-        ArrayDeque<BSTNode> queue = new ArrayDeque<>();
+    void runThroughLevelNodes(BSTNode1 node, ArrayList<BSTNode1> nodes) {
+        ArrayDeque<BSTNode1> queue = new ArrayDeque<>();
         queue.offer(node);
         while (!queue.isEmpty()) {
-            BSTNode bstNode = queue.poll();
-            nodes.add(bstNode);
-            if (bstNode.LeftChild != null) {
-                queue.offer(bstNode.LeftChild);
+            BSTNode1 bstNode1 = queue.poll();
+            nodes.add(bstNode1);
+            if (bstNode1.LeftChild != null) {
+                queue.offer(bstNode1.LeftChild);
             }
-            if (bstNode.RightChild != null) {
-                queue.offer(bstNode.RightChild);
+            if (bstNode1.RightChild != null) {
+                queue.offer(bstNode1.RightChild);
             }
         }
     }
 
-    public ArrayList<BSTNode> DeepAllNodes(int order) {
-        ArrayList<BSTNode> nodes = new ArrayList<>();
+    public ArrayList<BSTNode1> DeepAllNodes(int order) {
+        ArrayList<BSTNode1> nodes = new ArrayList<>();
         if (Root != null) {
             switch (order) {
                 case 0:
@@ -200,7 +200,7 @@ class BST<T>
         return nodes;
     }
 
-    private void inOrderDeepSearch(BSTNode<T> root, ArrayList<BSTNode> nodes) {
+    private void inOrderDeepSearch(BSTNode1<T> root, ArrayList<BSTNode1> nodes) {
         if (root == null) {
             return;
         }
@@ -209,7 +209,7 @@ class BST<T>
         inOrderDeepSearch(root.RightChild, nodes);
     }
 
-    private void postOrderDeepSearch(BSTNode<T> root, ArrayList<BSTNode> nodes) {
+    private void postOrderDeepSearch(BSTNode1<T> root, ArrayList<BSTNode1> nodes) {
         if (root == null) {
             return;
         }
@@ -218,7 +218,7 @@ class BST<T>
         nodes.add(root);
     }
 
-    private void preOrderDeepSearch(BSTNode<T> root, ArrayList<BSTNode> nodes) {
+    private void preOrderDeepSearch(BSTNode1<T> root, ArrayList<BSTNode1> nodes) {
         if (root == null) {
             return;
         }
