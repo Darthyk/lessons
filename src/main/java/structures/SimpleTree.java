@@ -127,6 +127,25 @@ class SimpleTree<T>
         }
         return leaves;
     }
+
+    public ArrayList<T> EvenTrees() {
+        // ...
+        ArrayList<T> edgesToDelete = new ArrayList<>();
+        findEdgesToRemove(Root, edgesToDelete);
+        return edgesToDelete;
+    }
+
+    public void findEdgesToRemove(SimpleTreeNode<T> root, ArrayList<T> edgesToRemove) {
+        if (root.Children != null) {
+            for (SimpleTreeNode<T> child : root.Children) {
+                if (countNodes(child) % 2 == 0) {
+                    edgesToRemove.add(child.Parent.NodeValue);
+                    edgesToRemove.add(child.NodeValue);
+                }
+                findEdgesToRemove(child, edgesToRemove);
+            }
+        }
+    }
 }
 
 class SimpleTreeNode<T>
