@@ -1,13 +1,10 @@
-class Vertex
-{
-    public int Value;
-    public Vertex(int val)
-    {
-        Value = val;
-    }
-}
+package structures;
 
-class SimpleGraph
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+
+
+public class SimpleGraph
 {
     Vertex [] vertex;
     int [][] m_adjacency;
@@ -82,5 +79,61 @@ class SimpleGraph
 
     private boolean isIndexCorrect(int index) {
         return index >= 0 && index < max_vertex;
+    }
+
+    public ArrayList<Vertex> DepthFirstSearch(int VFrom, int VTo)
+    {
+        // Узлы задаются позициями в списке vertex.
+        // Возвращается список узлов -- путь из VFrom в VTo.
+        // Список пустой, если пути нету.
+        for (int i = 0; i < vertex.length; i++) {
+            vertex[i].Hit = false;
+        }
+        ArrayDeque<Integer> hittedVertices = new ArrayDeque<>();
+
+        vertex[VFrom].Hit = true;
+        hittedVertices.push(VFrom);
+        int currentIndex = VFrom;
+
+        for (int i = 0; i < vertex.length; i++) {
+            if (m_adjacency[currentIndex][VTo] == 1) {
+                hittedVertices.push(VTo);
+                break;
+            }
+            boolean shouldGoNext = false;
+            for (int j = 0; j < max_vertex; j++) {
+                if (m_adjacency[currentIndex][j] == 1 && !vertex[j].Hit) {
+                    vertex[j].Hit = true;
+                    hittedVertices.push(j);
+                    currentIndex = j;
+                    shouldGoNext = true;
+                    break;
+                }
+            }
+            if (!shouldGoNext) {
+                hittedVertices.pop();
+                if (hittedVertices.isEmpty()) {
+                    return new ArrayList<>();
+                }
+                currentIndex = hittedVertices.peek();
+            }
+        }
+
+        ArrayList<Vertex> path = new ArrayList<>();
+        while (!hittedVertices.isEmpty()) {
+            path.add(vertex[hittedVertices.pollLast()]);
+        }
+
+        return path;
+    }
+}
+
+class Vertex
+{
+    public boolean Hit;
+    public int Value;
+    public Vertex(int val)
+    {
+        Value = val;
     }
 }
