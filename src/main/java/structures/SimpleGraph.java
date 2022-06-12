@@ -2,7 +2,9 @@ package structures;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Queue;
 
 public class SimpleGraph
 {
@@ -125,6 +127,44 @@ public class SimpleGraph
         }
 
         return path;
+    }
+
+    public ArrayList<Vertex> BreadthFirstSearch(int VFrom, int VTo) {
+        // Узлы задаются позициями в списке vertex.
+        // Возвращается список узлов -- путь из VFrom в VTo.
+        // Список пустой, если пути нету.
+        ArrayList<Vertex> vertices = new ArrayList<>();
+
+        for (int i = 0; i < max_vertex; i++) vertex[i].Hit = false;
+        int[] prevVertices = new int[max_vertex];
+        Arrays.fill(prevVertices, -1);
+        ArrayDeque<Integer> verticesHit = new ArrayDeque<>();
+        vertex[VFrom].Hit = true;
+        verticesHit.offer(VFrom);
+        BFS:
+        while (!verticesHit.isEmpty()) {
+            int currentVertex = verticesHit.poll();
+            for (int i = 0; i < max_vertex; i++) {
+                if (m_adjacency[currentVertex][i] == 1 && !vertex[i].Hit) {
+                    verticesHit.offer(i);
+                    vertex[i].Hit = true;
+                    prevVertices[i] = currentVertex;
+                    if (i == VTo) break BFS;
+                }
+            }
+        }
+        return tracePath(prevVertices, vertices, VTo);
+    }
+
+    private ArrayList<Vertex> tracePath(int[] prevVertices, ArrayList<Vertex> vertices, int vertexTo) {
+        if (prevVertices[vertexTo] == -1) return vertices;
+        int currentVertex = vertexTo;
+        while (currentVertex != -1) {
+            vertices.add(vertex[currentVertex]);
+            currentVertex = prevVertices[currentVertex];
+        }
+        Collections.reverse(vertices);
+        return vertices;
     }
 }
 
