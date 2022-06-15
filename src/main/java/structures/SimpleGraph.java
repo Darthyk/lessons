@@ -166,6 +166,31 @@ public class SimpleGraph
         Collections.reverse(vertices);
         return vertices;
     }
+
+    public ArrayList<Vertex> WeakVertices()
+    {
+        // возвращает список узлов вне треугольников
+        ArrayList<Vertex> weakVertices = new ArrayList<>();
+        for (int i = 0; i < max_vertex; i++) {
+            if (!isInTriangle(i)) {
+                weakVertices.add(vertex[i]);
+            }
+        }
+        return weakVertices;
+    }
+
+    private boolean isInTriangle(int index) {
+        for (int i = 0; i < max_vertex; i++) {
+            if (m_adjacency[index][i] == 1 && index != i) {
+                for (int j = 0; j < max_vertex; j++) {
+                    if (m_adjacency[i][j] == 1 && m_adjacency[index][j] == 1) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
 
 class Vertex

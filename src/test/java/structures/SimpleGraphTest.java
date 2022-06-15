@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SimpleGraphTest {
@@ -121,5 +122,30 @@ public class SimpleGraphTest {
         graph.RemoveEdge(7, 8);
         actual = graph.BreadthFirstSearch(0, 8);
         assertTrue(actual.isEmpty());
+    }
+
+    @Test
+    public void testWeakVertices() {
+        SimpleGraph graph = new SimpleGraph(5);
+        graph.AddVertex(1);
+        graph.AddVertex(2);
+        graph.AddVertex(3);
+        graph.AddVertex(4);
+        graph.AddVertex(5);
+
+        graph.AddEdge(0, 1);
+        graph.AddEdge(0, 2);
+        graph.AddEdge(0, 3);
+        graph.AddEdge(1, 3);
+        graph.AddEdge(1, 4);
+        graph.AddEdge(2, 3);
+        graph.AddEdge(3, 4);
+
+        assertTrue(graph.WeakVertices().isEmpty());
+
+        graph.RemoveEdge(3, 4);
+        List<Vertex> actual = graph.WeakVertices();
+        assertFalse(actual.isEmpty());
+        assertEquals(5, actual.get(0).Value);
     }
 }
